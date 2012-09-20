@@ -1,0 +1,4 @@
+*.pyc
+progress/data/*
+progress/settings.py
+!progress/settings.py.orig

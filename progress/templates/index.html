@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Progress</title>
+        <link rel="stylesheet" href="{{ STATIC_URL }}bootstrap/css/bootstrap.css">
+    </head>
+    <body>
+        <div class="container">
+            <legend>Progress</legend>
+            <div class="row">
+                <div class="span12">
+                    <ul class="unstyled">
+                        {% for g in goals %}
+                        <li>
+                            {{ g.name }}
+                            <div class="progress progress-striped">
+                                <span class="pull-right">{{ g.status }}</span>
+                                <div class="bar" style="width: {{ g.status }}"></div>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

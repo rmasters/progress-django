@@ -4,6 +4,7 @@ from django.dispatch import receiver
 from django.contrib import admin
 
 from django.utils.timezone import now
+from django.utils.dateformat import format
 import time
 
 class Goal(models.Model):
@@ -90,7 +91,7 @@ class DayLog(models.Model):
         get_latest_by = 'createdAt'
 
     def __unicode__(self):
-        return '%s: %s' % (self.date.strftime('%d/%m/%Y'), self.summary)
+        return '%s: %s' % (format(self.date, 'D jS'), self.summary)
 
 admin.site.register(Goal)
 admin.site.register(Update)

@@ -80,5 +80,18 @@ class Update(models.Model):
         val = self.get_float_or_int(self.value)
         return self.format_unit(val, self.goal.unit)
 
+class DayLog(models.Model):
+    date = models.DateField(default=now())
+    summary = models.CharField(max_length=50)
+    extended = models.TextField()
+    createdAt = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        get_latest_by = 'createdAt'
+
+    def __unicode__(self):
+        return '%s: %s' % (self.date.strftime('%d/%m/%Y'), self.summary)
+
 admin.site.register(Goal)
 admin.site.register(Update)
+admin.site.register(DayLog)

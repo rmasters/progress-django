@@ -12,10 +12,11 @@
                     <ul class="unstyled">
                         {% for g in goals %}
                         <li>
-                            {{ g.name }}
-                            <div class="progress progress-striped">
-                                <span class="pull-right">{{ g.status }}</span>
-                                <div class="bar" style="width: {{ g.status }}"></div>
+                            <strong>{{ g.name }}</strong>
+                            {% if g.hasTargetDate %}({{ g.remaining.days }} days remaining){% endif %}
+                            <span class="pull-right">Latest update: {{ g.status }}, target: {{ g.target }}</span>
+                            <div class="progress">
+                                <div class="bar bar-success" style="width: {{ g.percentage }}%;"></div>
                             </div>
                         </li>
                         {% endfor %}

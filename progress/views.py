@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 
-from progress.models import Goal, Progression
+from progress.models import Goal, Update
 
 def index(request):
 	goals = Goal.objects.all()

@@ -85,13 +85,15 @@ class DayLog(models.Model):
     date = models.DateField(default=now())
     summary = models.CharField(max_length=50)
     extended = models.TextField()
+    isSecret = models.BooleanField(default=False)
     createdAt = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         get_latest_by = 'createdAt'
 
     def __unicode__(self):
-        return '%s: %s' % (format(self.date, 'D jS'), self.summary)
+        summary = self.summary if self.isSecret is False else 'Entry undisclosed'
+        return '%s: %s' % (format(self.date, 'D jS'), summary)
 
 admin.site.register(Goal)
 admin.site.register(Update)

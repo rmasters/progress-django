@@ -27,7 +27,11 @@
                     <legend>Day logs (last 7 days)</legend>
                     <ul class="unstyled">
                     {% for l in daylogs %}
+                    {% if l.isSecret %}
+                        <li><q class="muted">{{ l }}</q></li>
+                    {% else %}
                         <li><q>{{ l }}</q></li>
+                    {% endif %}
                     {% endfor %}
                     </ul>
                 </div>

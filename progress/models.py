@@ -84,7 +84,7 @@ class Update(models.Model):
 class DayLog(models.Model):
     date = models.DateField(default=now())
     summary = models.CharField(max_length=50)
-    extended = models.TextField()
+    extended = models.TextField(blank=True)
     isSecret = models.BooleanField(default=False)
     createdAt = models.DateTimeField(auto_now_add=True)
 
